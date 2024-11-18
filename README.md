@@ -47,7 +47,7 @@
   - タスク達成数に応じて、アイコンの表示を切り替える仕様。画像のプリセットを用意し、進捗に応じて表示を変更。
 
 ### 画面遷移図
-Figma：https://www.figma.com/design/nNzS7px2f9WDQb2nGSwWaX/PizzaS?node-id=0-1&t=5YVHl9wpVCbBJ5eL-1
+Figma：https://www.figma.com/design/nNzS7px2f9WDQb2nGSwWaX/PizzaS?node-id=0-1&t=a9GLhBW2wRRjwrdT-1
 
 ### READMEに記載した機能
 - [x] ユーザー登録機能
