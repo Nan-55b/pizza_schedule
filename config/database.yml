@@ -13,3 +13,10 @@ development:
 test:
   <<: *default
   database: pizza_schedule_test
+
+production:
+  <<: *default
+  database: pizza_schedule_production
+  username: postgres
+  password: password
+  host: db
