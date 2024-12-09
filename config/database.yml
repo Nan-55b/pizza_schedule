@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: pizza_schedule_development
+  username: postgres
+  password: password
+  host: db
+
+test:
+  <<: *default
+  database: pizza_schedule_test
+  username: postgres
+  password: password
+  host: db
+
+production:
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
