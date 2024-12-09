@@ -20,4 +20,4 @@ production:
   username: postgres
   password: password
   host: db
-  url: postgres://koyeb-adm:*******@ep-withered-moon-a2ovrp1l.eu-central-1.pg.koyeb.app/koyebdb
+  url: postgres://koyeb-adm:oRyQ7aIJZO9p@ep-withered-moon-a2ovrp1l.eu-central-1.pg.koyeb.app/koyebdb

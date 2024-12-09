@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     environment:
-      - RAILS_ENV=development
+      - DATABASE_URL=postgresql://postgres:password@db:5432/pizza_schedule_development
 
   db:
     image: postgres:15
