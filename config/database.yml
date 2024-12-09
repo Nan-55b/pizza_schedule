@@ -2,22 +2,21 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres
-  password: password
-  host: db
 
 development:
   <<: *default
   database: pizza_schedule_development
+  username: postgres
+  password: password
+  host: db
 
 test:
   <<: *default
   database: pizza_schedule_test
-
-production:
-  <<: *default
-  database: pizza_schedule_production
   username: postgres
   password: password
   host: db
-  url: postgres://koyeb-adm:oRyQ7aIJZO9p@ep-withered-moon-a2ovrp1l.eu-central-1.pg.koyeb.app/koyebdb
+
+production:
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>

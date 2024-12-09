@@ -6,11 +6,8 @@ services:
       - .:/app
     ports:
       - "3000:3000"
-    depends_on:
-      - db
     environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/pizza_schedule_development
-
+      - DATABASE_URL=postgres://koyeb-adm:oRyQ7aIJZO9p@ep-withered-moon-a2ovrp1l.eu-central-1.pg.koyeb.app/koyebdb
   db:
     image: postgres:15
     environment:
