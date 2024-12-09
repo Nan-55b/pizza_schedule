@@ -19,3 +19,12 @@ COPY Gemfile* /app/
 
 # Gemfileをインストール
 RUN bundle install
+
+# アプリケーションコードを追加
+COPY . /app
+
+# 必要なポートを公開
+EXPOSE 3000
+
+# サーバーを起動
+CMD ["rails", "server", "-b", "0.0.0.0"]
