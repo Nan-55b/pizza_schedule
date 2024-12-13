@@ -20,7 +20,7 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - .:/pizza_schedule
+      - .:/app
       - bundle_data:/usr/local/bundle:cached
       - node_modules:/app/node_modules
     environment:
