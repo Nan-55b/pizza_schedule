@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      session[:user_id] = @user.id  # 新規登録後にログイン状態にする
+      redirect_to root_path, notice: '登録が完了しました。トップページに戻ります。'
     else
       render :new
     end
@@ -17,6 +18,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password,)
   end
 end
