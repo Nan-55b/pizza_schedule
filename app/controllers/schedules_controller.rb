@@ -19,6 +19,8 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.find(params[:id])
+    @task = Task.new
+    @tasks = @schedule.tasks.includes(:user).order(created_at: :desc)
   end
 
   private

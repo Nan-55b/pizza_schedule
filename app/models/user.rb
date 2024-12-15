@@ -6,4 +6,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :schedules, dependent: :destroy
+  has_many :tasks, dependent: :destroy
+
+  def own?(object)
+    id == object&.user_id
+  end
 end
