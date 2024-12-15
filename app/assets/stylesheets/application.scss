@@ -1,5 +1,10 @@
 @import "bootstrap";
 @import 'top';
+
+body {
+  padding-top: 60px; /* ヘッダーの高さ分だけコンテンツを下げる */
+}
+
 /* ヘッダーのデザイン */
 header {
   position: fixed;

@@ -4,4 +4,6 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, presence: true, uniqueness: true
+
+  has_many :schedules, dependent: :destroy
 end
