@@ -1,31 +1,31 @@
 <div class="col-sm-12 col-lg-4 mb-3">
-              <div id="schedule-id-<%= schedule.id %>">
-                <div class="card">
-                  <div class="d-flex justify-content-center mb-4">
-      <div class="bg-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
-        <span class="text-muted">円グラフ（サンプル）</span>
+  <div id="schedule-id-<%= schedule.id %>">
+    <div class="card">
+      <div class="d-flex justify-content-center mb-4">
+        <div class="bg-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
+          <span class="text-muted">円グラフ（サンプル）</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="d-flex">
+          <h4 class="card-title">
+            <%= link_to schedule.title, schedule_path(schedule) %>
+          </h4>
+          <div class='ms-auto'>
+            <%= link_to '#', id: 'button-edit-#{schedule.id}' do %>
+              <i class="bi bi-pencil-fill"></i>
+            <% end %>
+            <%= link_to '#', id: 'button-delete-#{schedule.id}', method: :delete, data: {confirm: ''} do %>
+              <i class="bi bi-trash-fill"></i>
+            <% end %>
+          </div>
+        </div>
+        <ul class="list-inline">
+          <li><i class="bi bi-person"></i><%= schedule.user.name %></li>
+          <li><i class="bi bi-calendar"></i><%= l schedule.created_at, format: :short %></li>
+        </ul>
+        <p class="card-text"><%= schedule.title %></p>
       </div>
     </div>
-                  <div class="card-body">
-                    <div class="d-flex">
-                      <h4 class="card-title">
-                        <%= link_to schedule.title, '#' %>
-                      </h4>
-                      <div class='ms-auto'>
-                        <%= link_to '#', id: 'button-edit-#{schedule.id}' do %>
-                          <i class="bi bi-pencil-fill"></i>
-                        <% end %>
-                        <%= link_to '#', id: 'button-delete-#{schedule.id}', method: :delete, data: {confirm: ''} do %>
-                          <i class="bi bi-trash-fill"></i>
-                        <% end %>
-                      </div>
-                    </div>
-                    <ul class="list-inline">
-                      <li><i class="bi bi-person"></i><%= schedule.user.name %></li>
-                      <li><i class="bi bi-calendar"></i><%= l schedule.created_at, format: :short %></li>
-                    </ul>
-                    <p class="card-text">本文</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+  </div>
+</div>

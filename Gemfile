@@ -79,6 +79,8 @@ gem "rspec-rails", "~> 7.1"
 
 gem "bootstrap", "~> 5.3"
 
+gem 'bootstrap-icons'
+
 gem "jquery-rails", "~> 4.6"
 
 gem 'sassc-rails'
