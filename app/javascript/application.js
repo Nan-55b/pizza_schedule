@@ -1,7 +1,11 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
-import "bootstrap"
-//= require jquery
-//= require popper
-//= require bootstrap
+import "@hotwired/turbo-rails";
+import Rails from "@rails/ujs";
+Rails.start();
+import "controllers";
+// jQueryやBootstrapのimportはこの後に記述
+import "jquery";
+import "popper.js";
+import "bootstrap";
+//= require rails-ujs
+//= require_tree .
+import "../tasks";

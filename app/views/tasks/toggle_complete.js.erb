@@ -1,0 +1,8 @@
+const taskId = "<%= @task.id %>";
+const taskElement = document.querySelector(`#task-${taskId}`);
+
+if (<%= @task.completed? %>) {
+  taskElement.classList.add("completed");
+} else {
+  taskElement.classList.remove("completed");
+}
