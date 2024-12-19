@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :users, only: %i[new create edit update]
-  resources :schedules, only: %i[index new create show] do
-    resources :tasks, only: %i[create edit destroy], shallow: true
+  resources :schedules, only: %i[index new create show edit update destroy] do
+    resources :tasks, only: %i[create edit update destroy toggle_complete], shallow: true do
+      member do
+        patch :toggle_complete
+      end
+    end
   end
 
   get 'login', to: 'sessions#new'

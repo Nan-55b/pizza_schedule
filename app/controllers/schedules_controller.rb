@@ -23,6 +23,27 @@ class SchedulesController < ApplicationController
     @tasks = @schedule.tasks.includes(:user).order(created_at: :desc)
   end
 
+  def edit
+    @schedule = current_user.schedules.find(params[:id])
+  end
+  
+  def update
+    @schedule = current_user.schedules.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to schedule_path(@schedule), success: t('defaults.flash_message.updated', item: Schedule.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.flash_message.not_updated', item: Schedule.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+  schedule = current_user.schedules.find(params[:id])
+  schedule.destroy!
+  redirect_to schedules_path, success: t('defaults.flash_message.deleted', item: Schedule.model_name.human), status: :see_other
+end
+
+
   private
 
   def schedule_params

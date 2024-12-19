@@ -1,25 +1,17 @@
-<tr id="task-<%= task.id %>">
-  <td style="width: 60px">
-    <%= image_tag "sample", width: "50", height: "50", class: "rounded-circle" %>
-  </td>
-  <td>
-    <h3 class="small"><%= task.user.name %></h3>
-    <p><%= simple_format(task.body) %></p>
-  </td>
-  <% if current_user.own?(task) %>
-    <td class="action">
-      <ul class="list-inline justify-content-center" style="float: right;">
-        <li class="list-inline-item">
-          <%= link_to "#", class: "edit-task-link" do %>
-            <i class="bi bi-pencil-fill"></i>
-          <% end %>
-        </li>
-        <li class="list-inline-item">
-          <%= link_to "#", class: "delete-task-link" do %>
-            <i class="bi bi-trash-fill"></i>
-          <% end %>
-        </li>
-      </ul>
-    </td>
+<div id="task-<%= task.id %>" class="task <%= 'completed' if task.completed %>">
+  <%= form_with url: toggle_complete_task_path(task), method: :patch, local: false do %>
+    <%= check_box_tag "completed", "1", task.completed, onchange: "this.form.submit();" %>
   <% end %>
-</tr>
+  <span><%= task.body %></span>
+  
+  <% if current_user.own?(task) %>
+    <div class="d-flex justify-content-end">
+      <%= link_to edit_task_path(task), class: "btn btn-warning btn-sm me-2" do %>
+        <i class="bi bi-pencil-fill"></i> 編集
+      <% end %>
+      <%= form_with model: task, method: :delete, local: true do |form| %>
+        <%= form.submit "削除", class: "btn btn-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

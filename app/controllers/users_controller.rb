@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id  # 新規登録後にログイン状態にする
-      redirect_to root_path, success: '登録が完了しました。トップページに戻ります。'
+      redirect_to root_path, success: '登録が完了しました'
     else
       flash.now[:danger] = 'ユーザー登録に失敗しました'
       render :new, status: :unprocessable_entity

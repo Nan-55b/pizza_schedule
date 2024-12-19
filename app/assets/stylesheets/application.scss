@@ -63,6 +63,8 @@ header .btn-primary:hover {
 
 header .btn-secondary {
   background: #6c757d;
+  padding: 10px 20px;
+  font-size: 16px;
 }
 
 header .btn-secondary:hover {
@@ -171,4 +173,9 @@ header .btn-secondary:hover {
 
 .btn-pizza:hover span {
   transform: translateY(-10px); /* ホバー時にテキストを上に移動 */
+}
+
+.completed {
+  color: gray;
+  text-decoration: line-through;
 }

@@ -14,30 +14,33 @@
                 <li class="list-inline-item"><%= "by #{@schedule.user.name}" %></li>
                 <li class="list-inline-item"><%= l @schedule.created_at, format: :long %></li>
               </ul>
-              <div class='d-flex justify-content-end'>
-                <%= link_to "#", id: "button-edit-#{@schedule.id}" do %>
-                  <i class='bi bi-pencil-fill'></i>
-                <% end %>
-                <%= link_to "#", id: "button-delete-#{@schedule.id}", class: "ms-2" do %>
-                  <i class="bi bi-trash-fill"></i>
-                <% end %>
-              </div>
-              </div>
+              <% if current_user.own?(@schedule) %>
+                <div class="d-flex justify-content-end">
+                  <%= link_to edit_schedule_path(@schedule), class: "btn btn-warning btn-sm me-2" do %>
+                    <i class="bi bi-pencil-fill"></i> 編集
+                  <% end %>
+                  <%= form_with model: @schedule, method: :delete, local: true do |form| %>
+                    <%= form.submit "削除", class: "btn btn-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
-            <p><%= simple_format(@schedule.body) %></p>
           </div>
-        </article>
-      </div>
+          <p><%= simple_format(@schedule.body) %></p>
+        </div>
+      </article>
     </div>
-    <%= render 'tasks/form', task: @task, schedule: @schedule %>
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <table class="table">
-          <tbody id="table-task">
-            <%= render @tasks %>
-          </tbody>
-        </table>
-      </div>
+  </div>
+
+  <!-- タスク追加フォーム -->
+  <%= render 'tasks/form', task: @task, schedule: @schedule %>
+
+  <!-- タスク一覧 -->
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <% @tasks.each do |task| %>
+        <%= render 'tasks/task', task: task %>
+      <% end %>
     </div>
   </div>
 </div>

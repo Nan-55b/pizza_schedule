@@ -11,14 +11,16 @@
           <h4 class="card-title">
             <%= link_to schedule.title, schedule_path(schedule) %>
           </h4>
-          <div class='ms-auto'>
-            <%= link_to '#', id: 'button-edit-#{schedule.id}' do %>
-              <i class="bi bi-pencil-fill"></i>
-            <% end %>
-            <%= link_to '#', id: 'button-delete-#{schedule.id}', method: :delete, data: {confirm: ''} do %>
-              <i class="bi bi-trash-fill"></i>
-            <% end %>
-          </div>
+          <% if current_user.own?(schedule) %>
+            <div class='ms-auto'>
+              <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
+                <i class="bi bi-pencil-fill"></i>
+              <% end %>
+              <%= form_with model: schedule, method: :delete, local: true do |form| %>
+                <%= form.submit "削除", class: "bi bi-trash-fill btn btn-link text-danger p-0", data: { confirm: t('defaults.delete_confirm') } %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <ul class="list-inline">
           <li><i class="bi bi-person"></i><%= schedule.user.name %></li>

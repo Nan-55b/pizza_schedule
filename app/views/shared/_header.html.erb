@@ -3,9 +3,8 @@
     <%= link_to 'PizzaSchedule', root_path, class: "text-decoration-none text-white" %>
   </h1>
   <div class="d-flex gap-3 align-items-center">
-    <%= link_to current_user.name, '#', class: "btn btn-primary btn-lg" %>
-    <%= link_to 'スケジュール一覧', schedules_path, class: 'dropdown-item' %>
-    <%= link_to 'スケジュール作成', new_schedule_path, class: 'dropdown-item' %>
+    <%= link_to 'スケジュール一覧', schedules_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to 'スケジュール作成', new_schedule_path, class: "btn btn-primary btn-lg" %>
     <%= link_to 'ログアウト', logout_path, class: 'btn btn-secondary btn-lg', data: { turbo_method: :delete } %>
   </div>
 </header>
