@@ -1,12 +1,15 @@
 <div class="container pt-5">
+  <h1><%= @schedule.title %></h1>
+
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
-      <h1><%= t('.title') %></h1>
       <article class="card">
         <div class="card-body">
           <div class="row">
             <div class="col-md-3">
-              <%= image_tag "sample.jpg", width: "300", height: "200", class: "card-img-top img-fluid" %>
+              <div class="schedule-chart">
+                <%= render_schedule_chart(@tasks) %> <!-- ヘルパーを使用 -->
+              </div>
             </div>
             <div class="col-md-9">
               <h3 style="display: inline;"><%= @schedule.title %></h3>

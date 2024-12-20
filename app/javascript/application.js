@@ -9,3 +9,4 @@ import "bootstrap";
 //= require rails-ujs
 //= require_tree .
 import "../tasks";
+import "../schedules";

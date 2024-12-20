@@ -53,6 +53,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:body).merge(schedule_id: params[:schedule_id])
+    params.require(:task).permit(:body, :start_time, :end_time, :completed).merge(schedule_id: params[:schedule_id])
   end
 end

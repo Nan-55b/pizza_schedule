@@ -1,0 +1,116 @@
+.schedule-chart {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient(#f0f0f0 0%, #007bff 0%);
+}
+
+.schedule-chart .hour-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% calc(-100px); /* 円の外側 */
+  transform: rotate(0deg);
+}
+
+.schedule-chart .hour-label::after {
+  content: attr(data-hour); /* 時間を表示 */
+  display: block;
+}
+
+.schedule-chart .hour-label[data-hour="0"] {
+  transform: rotate(0deg);
+}
+
+.schedule-chart .hour-label[data-hour="1"] {
+  transform: rotate(15deg);
+}
+
+.schedule-chart .hour-label[data-hour="2"] {
+  transform: rotate(30deg);
+}
+
+.schedule-chart .hour-label[data-hour="3"] {
+  transform: rotate(45deg);
+}
+
+.schedule-chart .hour-label[data-hour="4"] {
+  transform: rotate(60deg);
+}
+
+.schedule-chart .hour-label[data-hour="5"] {
+  transform: rotate(75deg);
+}
+
+.schedule-chart .hour-label[data-hour="6"] {
+  transform: rotate(90deg);
+}
+
+.schedule-chart .hour-label[data-hour="7"] {
+  transform: rotate(105deg);
+}
+
+.schedule-chart .hour-label[data-hour="8"] {
+  transform: rotate(120deg);
+}
+
+.schedule-chart .hour-label[data-hour="9"] {
+  transform: rotate(135deg);
+}
+
+.schedule-chart .hour-label[data-hour="10"] {
+  transform: rotate(150deg);
+}
+
+.schedule-chart .hour-label[data-hour="11"] {
+  transform: rotate(165deg);
+}
+
+.schedule-chart .hour-label[data-hour="12"] {
+  transform: rotate(180deg);
+}
+
+.schedule-chart .hour-label[data-hour="13"] {
+  transform: rotate(195deg);
+}
+
+.schedule-chart .hour-label[data-hour="14"] {
+  transform: rotate(210deg);
+}
+
+.schedule-chart .hour-label[data-hour="15"] {
+  transform: rotate(225deg);
+}
+
+.schedule-chart .hour-label[data-hour="16"] {
+  transform: rotate(240deg);
+}
+
+.schedule-chart .hour-label[data-hour="17"] {
+  transform: rotate(255deg);
+}
+
+.schedule-chart .hour-label[data-hour="18"] {
+  transform: rotate(270deg);
+}
+
+.schedule-chart .hour-label[data-hour="19"] {
+  transform: rotate(285deg);
+}
+
+.schedule-chart .hour-label[data-hour="20"] {
+  transform: rotate(300deg);
+}
+
+.schedule-chart .hour-label[data-hour="21"] {
+  transform: rotate(315deg);
+}
+
+.schedule-chart .hour-label[data-hour="22"] {
+  transform: rotate(330deg);
+}
+
+.schedule-chart .hour-label[data-hour="23"] {
+  transform: rotate(345deg);
+}

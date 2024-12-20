@@ -2,9 +2,15 @@
   <div id="schedule-id-<%= schedule.id %>">
     <div class="card">
       <div class="d-flex justify-content-center mb-4">
-        <div class="bg-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
-          <span class="text-muted">円グラフ（サンプル）</span>
-        </div>
+        <% if schedule.tasks.empty? || schedule.tasks.any? { |task| task.start_time.nil? || task.end_time.nil? } %>
+          <div class="bg-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
+            <span class="text-muted">円グラフ（サンプル）</span>
+          </div>
+        <% else %>
+          <div class="schedule-chart">
+            <%= render_schedule_chart(schedule.tasks) %>
+          </div>
+        <% end %>
       </div>
       <div class="card-body">
         <div class="d-flex">

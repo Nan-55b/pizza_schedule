@@ -1,9 +1,21 @@
 <div class="row mb-3" id="task-form">
   <div class="col-lg-8 offset-lg-2">
-    <%= form_with model: task, url: schedule_tasks_path(schedule) do |f| %>
-      <%= f.label :body %>
-      <%= f.text_area :body, class: "form-control mb-3", row: "4", placeholder: Task.human_attribute_name(:body) %>
-      <%= f.submit t('defaults.post'), class: "btn btn-primary" %>
+    <%= form_with model: @task, url: schedule_tasks_path(@schedule), method: :post, local: true do |f| %>
+      <div>
+        <%= f.label :body, "タスク名" %>
+        <%= f.text_field :body %>
+      </div>
+      <div>
+        <%= f.label :start_time, "開始時間" %>
+        <%= f.time_select :start_time %>
+      </div>
+      <div>
+        <%= f.label :end_time, "終了時間" %>
+        <%= f.time_select :end_time %>
+      </div>
+      <div>
+        <%= f.submit "追加" %>
+      </div>
     <% end %>
   </div>
 </div>
