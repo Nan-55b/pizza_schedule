@@ -6,37 +6,43 @@
       <article class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-md-3">
-              <div class="schedule-chart">
+            <!-- 左側: グラフとスケジュール情報 -->
+            <div class="col-md-4 text-center">
+              <div class="schedule-chart mb-3">
                 <%= render_schedule_chart(@tasks) %> <!-- ヘルパーを使用 -->
               </div>
-            </div>
-            <div class="col-md-9">
-              <h3 style="display: inline;"><%= @schedule.title %></h3>
-              <ul class="list-inline">
-                <li class="list-inline-item"><%= "by #{@schedule.user.name}" %></li>
-                <li class="list-inline-item"><%= l @schedule.created_at, format: :long %></li>
+              <h3 class="mb-2"><%= @schedule.title %></h3>
+              <p><%= simple_format(@schedule.body) %></p>
+              <ul class="list-inline text-muted small">
+                <li class="list-inline-item"><i class="bi bi-person"></i> <%= @schedule.user.name %></li>
+                <li class="list-inline-item"><i class="bi bi-calendar"></i> <%= l @schedule.created_at, format: :long %></li>
               </ul>
+            </div>
+            <!-- 右側: 編集/削除ボタン -->
+            <div class="col-md-8 d-flex justify-content-end align-items-start">
               <% if current_user.own?(@schedule) %>
-                <div class="d-flex justify-content-end">
-                  <%= link_to edit_schedule_path(@schedule), class: "btn btn-warning btn-sm me-2" do %>
-                    <i class="bi bi-pencil-fill"></i> 編集
-                  <% end %>
-                  <%= form_with model: @schedule, method: :delete, local: true do |form| %>
-                    <%= form.submit "削除", class: "btn btn-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
-                  <% end %>
-                </div>
+                <%= link_to edit_schedule_path(@schedule), class: "btn btn-warning btn-sm me-2 d-flex align-items-center" do %>
+                  <i class="bi bi-pencil-fill me-1"></i> 編集
+                <% end %>
+                <%= form_with model: @schedule, method: :delete, local: true do |form| %>
+                  <%= form.submit "削除", class: "btn btn-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+                <% end %>
               <% end %>
             </div>
           </div>
-          <p><%= simple_format(@schedule.body) %></p>
         </div>
       </article>
     </div>
   </div>
 
-  <!-- タスク追加フォーム -->
-  <%= render 'tasks/form', task: @task, schedule: @schedule %>
+  <!-- フォーム: タスク追加 -->
+  <% if current_user.own?(@schedule) %>
+    <div class="row mb-3">
+      <div class="col-lg-8 offset-lg-2">
+        <%= render 'tasks/form', task: @task, schedule: @schedule %>
+      </div>
+    </div>
+  <% end %>
 
   <!-- タスク一覧 -->
   <div class="row">

@@ -5,4 +5,7 @@ class Task < ApplicationRecord
 
   belongs_to :user
   belongs_to :schedule
+  def own?(user)
+    self.user == user
+  end
 end

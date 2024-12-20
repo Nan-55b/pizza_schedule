@@ -1,7 +1,8 @@
 <div class="col-sm-12 col-lg-4 mb-3">
   <div id="schedule-id-<%= schedule.id %>">
     <div class="card">
-      <div class="d-flex justify-content-center mb-4">
+      <!-- グラフ部分 -->
+      <div class="d-flex justify-content-center mb-4 p-3">
         <% if schedule.tasks.empty? || schedule.tasks.any? { |task| task.start_time.nil? || task.end_time.nil? } %>
           <div class="bg-light rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
             <span class="text-muted">円グラフ（サンプル）</span>
@@ -12,27 +13,28 @@
           </div>
         <% end %>
       </div>
+      <!-- カード本文 -->
       <div class="card-body">
-        <div class="d-flex">
-          <h4 class="card-title">
+        <div class="d-flex align-items-start">
+          <h4 class="card-title mb-0 flex-grow-1">
             <%= link_to schedule.title, schedule_path(schedule) %>
           </h4>
           <% if current_user.own?(schedule) %>
-            <div class='ms-auto'>
-              <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
+            <div class="ms-auto">
+              <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}", class: "btn btn-sm btn-outline-primary" do %>
                 <i class="bi bi-pencil-fill"></i>
               <% end %>
-              <%= form_with model: schedule, method: :delete, local: true do |form| %>
-                <%= form.submit "削除", class: "bi bi-trash-fill btn btn-link text-danger p-0", data: { confirm: t('defaults.delete_confirm') } %>
+              <%= form_with model: schedule, method: :delete, local: true, class: "d-inline" do |form| %>
+                <%= form.submit "削除", class: "bi bi-trash-fill btn btn-sm btn-outline-danger", data: { confirm: t('defaults.delete_confirm') } %>
               <% end %>
             </div>
           <% end %>
         </div>
-        <ul class="list-inline">
-          <li><i class="bi bi-person"></i><%= schedule.user.name %></li>
-          <li><i class="bi bi-calendar"></i><%= l schedule.created_at, format: :short %></li>
+        <ul class="list-inline text-muted small mb-2">
+          <li class="list-inline-item"><i class="bi bi-person"></i> <%= schedule.user.name %></li>
+          <li class="list-inline-item"><i class="bi bi-calendar"></i> <%= l schedule.created_at, format: :short %></li>
         </ul>
-        <p class="card-text"><%= schedule.title %></p>
+        <p class="card-text mt-2"><%= schedule.body.presence || "説明がありません" %></p>
       </div>
     </div>
   </div>
