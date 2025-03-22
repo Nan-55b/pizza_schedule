@@ -14,7 +14,11 @@ class SchedulesController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.includes(:user)
+    if params[:query].present?
+      @schedules = Schedule.where('title LIKE ?', "%#{params[:query]}%")
+    else
+      @schedules = Schedule.all
+    end
   end
 
   def show

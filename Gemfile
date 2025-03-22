@@ -82,3 +82,5 @@ gem "rspec-rails", "~> 7.1"
 gem "bootstrap", "~> 5.3"
 
 gem 'sassc-rails'
+
+gem 'ransack', '3.2.1'
