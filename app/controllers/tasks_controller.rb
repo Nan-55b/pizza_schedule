@@ -43,13 +43,17 @@ class TasksController < ApplicationController
 
   def toggle_complete
     @task = Task.find(params[:id])
-    @task.update(completed: !@task.completed)
+    if @task.status == "completed"
+      @task.update(status: "pending")
+    else
+      @task.update(status: "completed")
+    end
     respond_to do |format|
-      format.html { redirect_to schedule_path(@task.schedule) }  # HTMLリクエストの場合はリダイレクト
+      format.html { redirect_to schedule_path(@task.schedule) } # HTMLリクエストの場合はリダイレクト
       format.js   # JSリクエストの場合は、別途 `toggle_complete.js.erb` を呼び出す
     end
   end
-  
+
   private
 
   def task_params

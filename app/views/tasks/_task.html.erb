@@ -1,7 +1,7 @@
   <% if current_user.own?(task) %>
 <div id="task-<%= task.id %>" class="task <%= 'completed' if task.completed %>">
   <%= form_with url: toggle_complete_task_path(task), method: :patch, local: false do %>
-    <%= check_box_tag "completed", "1", task.completed, onchange: "this.form.submit();" %>
+    <%= check_box_tag "completed", "1", task.status == "completed", onchange: "this.form.submit();" %>
   <% end %>
   <span>
     <%= task.body %>

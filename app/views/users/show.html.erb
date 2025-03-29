@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h1>プロフィール</h1>
+  <p>
+    <strong>プロフィールアイコン:</strong><br>
+    <%= image_tag asset_path(@user.profile_icon), alt: "プロフィールアイコン", class: "profile-icon" if @user.profile_icon.present? %>
+  </p>
+  <p>
+    <strong>名前:</strong>
+    <%= @user.name %>
+  </p>
+  <p>
+    <strong>メールアドレス:</strong>
+    <%= @user.email %>
+  </p>
+  <%= link_to '編集', edit_user_path(@user), class: "btn btn-primary" %>
+</div>
