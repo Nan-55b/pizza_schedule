@@ -1,0 +1,21 @@
+  <% if current_user.own?(task) %>
+<div id="task-<%= task.id %>" class="task <%= 'completed' if task.completed %>">
+  <%= form_with url: toggle_complete_task_path(task), method: :patch, local: false do %>
+    <%= check_box_tag "completed", "1", task.status == "completed", onchange: "this.form.submit();" %>
+  <% end %>
+  <span>
+    <%= task.body %>
+    <small class="text-muted">
+      (<%= task.start_time&.strftime("%H:%M") || "未設定" %> - <%= task.end_time&.strftime("%H:%M") || "未設定" %>)
+    </small>
+  </span>
+    <div class="d-flex justify-content-end">
+      <%= link_to edit_task_path(task), class: "btn btn-warning btn-sm me-2" do %>
+        <i class="bi bi-pencil-fill"></i> 編集
+      <% end %>
+      <%= form_with model: task, method: :delete, local: true do |form| %>
+        <%= form.submit "削除", class: "btn btn-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
+    </div>
+</div>
+  <% end %>

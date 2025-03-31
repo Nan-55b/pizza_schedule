@@ -1,0 +1,11 @@
+<header class="d-flex justify-content-between align-items-center mb-5">
+  <h1 class="logo">
+    <%= link_to 'PizzaSchedule', root_path, class: "text-decoration-none text-white" %>
+  </h1>
+  <div class="d-flex gap-3 align-items-center">
+    <%= link_to 'スケジュール一覧', schedules_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to 'スケジュール作成', new_schedule_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to 'プロフィール', user_path(current_user), class: "btn btn-info btn-lg" %>
+    <%= link_to 'ログアウト', logout_path, class: 'btn btn-secondary btn-lg', data: { turbo_method: :delete } %>
+  </div>
+</header>

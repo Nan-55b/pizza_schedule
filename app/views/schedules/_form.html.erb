@@ -1,0 +1,12 @@
+<%= form_with model: schedule do |f| %>
+  <%= render 'shared/flash_message', object: f.object %>
+  <div class="mb-3">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control", rows: "10" %>
+  </div>
+  <%= f.submit nil, class: "btn btn-primary" %>
+<% end %>
