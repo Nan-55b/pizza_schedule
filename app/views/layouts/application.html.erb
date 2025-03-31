@@ -3,6 +3,11 @@
   <head>
     <title>PizzaSchedule</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= tag.meta(property: "og:title", content: "PizzaSchedule") %>
+    <%= tag.meta(property: "og:description", content: "円グラフ型の1日のスケジュール管理アプリです。ピザを切り分けるように1日の時間を区切り、タスクを完了するごとに食べ進める感覚でタスク管理ができます。") %>
+    <%= tag.meta(property: "og:image", content: "https://pizza-schedule.koyeb.app/ogp.png") %>
+    <%= tag.meta(property: "og:url", content: "https://pizza-schedule.koyeb.app/") %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
