@@ -1,0 +1,30 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  # 除外するファイル
+  Exclude:
+    - "config/environments/*"
+    - "vendors/**/*" # 修正: vendor -> vendors
+    - "bin/**"
+    - "db/**/*"
+    - "tmp/**/*"
+    - "lib/**/*"
+    - "Gemfile"
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+# 日本語のコメントを許可する
+Style/AsciiComments:
+  Enabled: false
