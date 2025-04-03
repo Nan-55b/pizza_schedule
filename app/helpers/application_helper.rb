@@ -17,10 +17,10 @@ module ApplicationHelper
         end_angle = (position[:end] - 90) * Math::PI / 180
 
         # それぞれの座標を計算
-        start_x = 150 + 100 * Math.cos(start_angle)
-        start_y = 150 + 100 * Math.sin(start_angle)
-        end_x = 150 + 100 * Math.cos(end_angle)
-        end_y = 150 + 100 * Math.sin(end_angle)
+        start_x = 150 + (100 * Math.cos(start_angle))
+        start_y = 150 + (100 * Math.sin(start_angle))
+        end_x = 150 + (100 * Math.cos(end_angle))
+        end_y = 150 + (100 * Math.sin(end_angle))
 
         # 円弧を描くためのフラグ（大きな円弧を描く場合）
         large_arc_flag = (position[:end] - position[:start] > 180) ? 1 : 0
@@ -38,9 +38,9 @@ module ApplicationHelper
       # 24時間表記のラベルを描画
       24.times do |hour|
         angle = (hour * 15) - 90 # 1時間15度で進む (0時を上に)
-        x = 150 + 110 * Math.cos(angle * Math::PI / 180) # 半径+10の位置にラベル配置
-        y = 150 + 110 * Math.sin(angle * Math::PI / 180)
-        concat content_tag(:text, hour.to_s, x: x, y: y, "text-anchor": "middle", "alignment-baseline": "middle", "font-size": "10", fill: "black")
+        x = 150 + (110 * Math.cos(angle * Math::PI / 180)) # 半径+10の位置にラベル配置
+        y = 150 + (110 * Math.sin(angle * Math::PI / 180))
+        concat content_tag(:text, hour.to_s, x: x, y: y, 'text-anchor': "middle", 'alignment-baseline': "middle", 'font-size': "10", fill: "black")
       end
     end
   end

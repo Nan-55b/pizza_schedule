@@ -8,6 +8,10 @@ class TasksController < ApplicationController
   def new
   end
 
+  def edit
+    @task = Task.find(params[:id])
+  end
+
   def create
     task = current_user.tasks.build(task_params)
     if task.save
@@ -17,11 +21,6 @@ class TasksController < ApplicationController
     end
   end
   
-  def edit
-    @task = Task.find(params[:id])
-  end
-
-
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
@@ -32,12 +31,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    flash[:notice] = "タスクを削除しました"
-    redirect_to schedule_path(@task.schedule)  # 必要なリダイレクト先に変更
-  end
+    redirect_to schedule_path(@task.schedule), success: t('tasks.destroy')
   end
 
 

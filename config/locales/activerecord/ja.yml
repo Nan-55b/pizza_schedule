@@ -2,9 +2,14 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      schedule: スケジュール
+      task: タスク
     attributes:
       user:
         email: メールアドレス
         name: 名前
         password: パスワード
         password_confirmation: パスワード確認
+      schedule:
+        title: タイトル
+        body: 本文

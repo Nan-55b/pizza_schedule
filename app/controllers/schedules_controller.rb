@@ -1,18 +1,4 @@
 class SchedulesController < ApplicationController
-  def new
-    @schedule = Schedule.new
-  end
-
-  def create
-    @schedule = current_user.schedules.build(schedule_params)
-    if @schedule.save
-      redirect_to schedule_path(@schedule), success: t('defaults.flash_message.created', item: Schedule.model_name.human)
-    else
-      flash.now[:danger] = t('defaults.flash_message.not_created', item: Schedule.model_name.human)
-      render :new, status: :unprocessable_entity
-    end
-  end
-
   def index
     if params[:query].present?
       @schedules = Schedule.where('title LIKE ?', "%#{params[:query]}%")
@@ -27,8 +13,22 @@ class SchedulesController < ApplicationController
     @tasks = @schedule.tasks.includes(:user).order(created_at: :desc)
   end
 
+  def new
+    @schedule = Schedule.new
+  end
+
   def edit
     @schedule = current_user.schedules.find(params[:id])
+  end
+
+  def create
+    @schedule = current_user.schedules.build(schedule_params)
+    if @schedule.save
+      redirect_to schedule_path(@schedule), success: t('defaults.flash_message.created', item: Schedule.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.flash_message.not_created', item: Schedule.model_name.human)
+      render :new, status: :unprocessable_entity
+    end
   end
   
   def update

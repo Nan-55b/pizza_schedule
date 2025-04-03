@@ -13,20 +13,27 @@ ja:
       login: ログイン
       to_register_page: 登録ページへ
       password_forget: パスワードをお忘れの方はこちら
+    failure: "ログインに失敗しました"
   users:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
+    create:
+      success: "ユーザー登録が完了しました"
+      failure: "ユーザー登録に失敗しました"
+    update:
+      success: "プロフィールを更新しました"
+      failure: "プロフィールの更新に失敗しました"
   defaults:
     create: 作成
     post: 投稿
     delete_confirm: 削除しますか？
     flash_message:
-      created: "%{item}を作成しました"
-      not_created: "%{item}を作成出来ませんでした"
-      updated: "%{item}を更新しました"
-      not_updated: "%{item}を更新出来ませんでした"
-      deleted: "%{item}を削除しました"
+      created: "%{item}が作成されました。"
+      not_created: "%{item}を作成できませんでした。"
+      updated: "%{item}が更新されました。"
+      not_updated: "%{item}を更新できませんでした。"
+      deleted: "%{item}が削除されました。"
       require_login: ログインしてください
   header:
     login: ログイン
@@ -36,3 +43,8 @@ ja:
     create_schedule: スケジュール作成
     bookmark_index: ブックマーク一覧
     profile: プロフィール
+  tasks:
+    destroy: "タスクを削除しました"
+  schedules:
+    create:
+      failure: "スケジュールを作成できませんでした。"
