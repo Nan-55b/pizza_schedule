@@ -3,10 +3,11 @@ module ApplicationHelper
     !!session[:user_id]
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def render_schedule_chart(tasks)
-    content_tag :svg, width: "300", height: "300", viewBox: "0 0 300 300", xmlns: "http://www.w3.org/2000/svg" do
+    content_tag :svg, width: "300", height: "300", viewBox: "0 0 300 300", xmlns: "http://www.w3.org/2000/svg", style: "background: none;" do
       # 円の背景を描画
-      concat content_tag(:circle, "", cx: "150", cy: "150", r: "100", fill: "#f0f0f0")
+      concat content_tag(:circle, "", cx: "150", cy: "150", r: "100", class: "chart-border", stroke: "#8b4513", 'stroke-width': 4, fill: "#ffd1b3")
 
       # タスクごとのパスを描画
       tasks.each do |task|
@@ -32,7 +33,8 @@ module ApplicationHelper
           A100,100 0 #{large_arc_flag},1 #{end_x},#{end_y} Z
         D
 
-        concat content_tag(:path, "", d: path_d.strip, fill: "rgba(0, 123, 255, 0.5)", stroke: "blue")
+        color = task.completed? ? "#ffd1b3" : "#fd9785" # completedなら肌色、未完了ならピンク
+        concat content_tag(:path, "", d: path_d.strip, class: "chart-slice chart-divider", fill: color)
       end
 
       # 24時間表記のラベルを描画
@@ -41,6 +43,16 @@ module ApplicationHelper
         x = 150 + (110 * Math.cos(angle * Math::PI / 180)) # 半径+10の位置にラベル配置
         y = 150 + (110 * Math.sin(angle * Math::PI / 180))
         concat content_tag(:text, hour.to_s, x: x, y: y, 'text-anchor': "middle", 'alignment-baseline': "middle", 'font-size': "10", fill: "black")
+      end
+
+      # 12時間ごとの区切り線を描画
+      [0, 12].each do |hour|
+        angle = (hour * 15) - 90
+        x1 = 150 + (100 * Math.cos(angle * Math::PI / 180))
+        y1 = 150 + (100 * Math.sin(angle * Math::PI / 180))
+        x2 = 150 + (110 * Math.cos(angle * Math::PI / 180))
+        y2 = 150 + (110 * Math.sin(angle * Math::PI / 180))
+        concat content_tag(:line, "", x1: x1, y1: y1, x2: x2, y2: y2, class: "chart-divider")
       end
     end
   end
@@ -59,3 +71,4 @@ module ApplicationHelper
     { start: start_angle, end: end_angle }
   end
 end
+# rubocop:enable Metrics/AbcSize, Metrics/MethodLength

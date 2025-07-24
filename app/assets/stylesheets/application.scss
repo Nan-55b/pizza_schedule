@@ -1,13 +1,13 @@
 @import "bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.css";
-@import 'top';
-@import 'schedule';
+@import "top";
+@import "schedule";
 
 body {
-  padding-top: 60px; /* ヘッダーの高さ分だけコンテンツを下げる */
+  padding-top: 60px; // ヘッダーの高さ分だけコンテンツを下げる
 }
 
-/* ヘッダーのデザイン */
+// ヘッダーのデザイン
 header {
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@ header {
   justify-content: space-between;
 }
 
-/* ロゴ部分 */
+// ロゴ部分
 header .logo {
   font-size: 24px;
   font-weight: bold;
@@ -42,7 +42,7 @@ header h1 a:hover {
   color: #ffcc33;
 }
 
-/* ボタン */
+// ボタン
 header .btn {
   color: white;
   font-weight: bold;
@@ -50,7 +50,9 @@ header .btn {
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
 }
 
 header .btn-primary {
@@ -73,20 +75,20 @@ header .btn-secondary:hover {
   transform: scale(1.05);
 }
 
-/* フォーム：ピザの箱 */
+// フォーム：ピザの箱
 .pizza-box {
-  background: linear-gradient(to bottom, #fff7cc, #ffcc80); /* チーズの黄色 */
-  border: 5px solid #e25822; /* トマトソースの赤 */
-  border-radius: 20px; /* ピザの丸み */
+  background: linear-gradient(to bottom, #fff7cc, #ffcc80); // チーズの黄色
+  border: 5px solid #e25822; // トマトソースの赤
+  border-radius: 20px; // ピザの丸み
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   padding: 30px;
   position: relative;
   overflow: hidden;
-  z-index: 1; /* フォームが前面に表示されるように変更 */
+  z-index: 1; // フォームが前面に表示されるように変更
 }
 
 .pizza-box h1 {
-  background: linear-gradient(to bottom, #ff6347, #d9534f); /* 濃いトマト色 */
+  background: linear-gradient(to bottom, #ff6347, #d9534f); // 濃いトマト色
   color: white;
   padding: 15px;
   border-radius: 10px;
@@ -97,23 +99,23 @@ header .btn-secondary:hover {
   position: relative;
 }
 
-/* フォームフィールド */
-/* 既存のスタイルはそのまま */
+// フォームフィールド
+// 既存のスタイルはそのまま
 .form-control {
   border-radius: 10px;
-  border: 2px solid #e25822; /* トマト色の境界線 */
+  border: 2px solid #e25822; // トマト色の境界線
   padding: 15px;
   margin-bottom: 15px;
   font-size: 16px;
-  z-index: 2; /* フォームフィールドを最前面に表示 */
+  z-index: 2; // フォームフィールドを最前面に表示
 }
 
 .form-control:focus {
-  border-color: #ff6347; /* フォーカス時に濃いトマト色 */
+  border-color: #ff6347; // フォーカス時に濃いトマト色
   box-shadow: 0 0 5px rgba(255, 99, 71, 0.8);
 }
 
-/* ボタン */
+// ボタン
 .btn-primary {
   background-color: #ff6347;
   border-color: #e25822;
@@ -121,9 +123,11 @@ header .btn-secondary:hover {
   padding: 15px 30px;
   font-size: 18px;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   text-align: center;
-  z-index: 2; /* ボタンを最前面に表示 */
+  z-index: 2; // ボタンを最前面に表示
 }
 
 .btn-primary:hover {
@@ -134,28 +138,30 @@ header .btn-secondary:hover {
 .oven-shadow {
   background: rgba(0, 0, 0, 0.2);
   height: 20px;
-  width: 19%; /* 必要に応じて調整 */
+  width: 19%; // 必要に応じて調整
   border-radius: 50%;
   margin-top: -8px;
-  margin-left: auto;  /* 左右中央配置 */
-  margin-right: auto; /* 左右中央配置 */
-  position: relative; /* 親要素の中央に配置 */
+  margin-left: auto; // 左右中央配置
+  margin-right: auto; // 左右中央配置
+  position: relative; // 親要素の中央に配置
 }
-
-/* ピザボタン：通常時は真っ直ぐ、ホバー時に傾く */
+/* 
+// ピザボタン：通常時は真っ直ぐ、ホバー時に傾く
 .btn-pizza {
   position: relative;
   display: inline-block;
-  width: 100px; /* 横幅 */
-  height: 80px; /* 高さ */
+  width: 100px; // 横幅
+  height: 80px; // 高さ
   background: linear-gradient(to bottom right, #ffcc33, #ff6347);
   border: 5px solid #e25822;
   clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
   text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
-  line-height: 80px; /* ボタンの高さと合わせる */
+  line-height: 80px; // ボタンの高さと合わせる
 }
 
 .btn-pizza:hover {
@@ -163,7 +169,7 @@ header .btn-secondary:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* テキストの水平維持と上下移動 */
+// テキストの水平維持と上下移動
 .btn-pizza span {
   display: inline-block;
   color: white;
@@ -173,9 +179,9 @@ header .btn-secondary:hover {
 }
 
 .btn-pizza:hover span {
-  transform: translateY(-10px); /* ホバー時にテキストを上に移動 */
+  transform: translateY(-10px); // ホバー時にテキストを上に移動
 }
-
+ */
 .completed {
   color: gray;
   text-decoration: line-through;

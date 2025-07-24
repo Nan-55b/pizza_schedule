@@ -5,5 +5,6 @@
   <div class="d-flex gap-3">
     <%= link_to '新規登録', new_user_path, class: "btn btn-primary btn-lg" %>
     <%= link_to 'ログイン', login_path, class: "btn btn-secondary btn-lg" %>
+    <%= button_to 'ゲストログイン', guest_login_path, method: :post, class: "btn btn-outline-light btn-lg" %>
   </div>
 </header>

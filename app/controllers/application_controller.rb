@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :logged_in?
 
+  include Sorcery::Controller
+
   private
 
   def not_authenticated
