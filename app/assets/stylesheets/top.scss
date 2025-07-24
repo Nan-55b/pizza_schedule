@@ -15,3 +15,29 @@
   border-radius: 50%;
   margin-top: -10px;
 }
+
+/* ピザ風円グラフのスタイル */
+.pizza-chart-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(#f08080 50%, #90ee90 50%); /* 上半分を赤、下半分を緑 */
+  border: 10px solid #f4a460; /* 肌色の縁 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px; /* 中央寄せと下の余白 */
+}
+
+.pizza-chart-inner {
+  width: 140px; /* 内側の円のサイズを調整 */
+  height: 140px;
+  border-radius: 50%;
+  background-color: #ffffe0; /* チーズの色 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #500;
+}

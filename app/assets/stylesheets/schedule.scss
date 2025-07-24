@@ -3,7 +3,8 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: conic-gradient(#f0f0f0 0%, #007bff 0%);
+  background: transparent;
+  background-image: none;
 }
 
 .schedule-chart .hour-label {
@@ -113,4 +114,22 @@
 
 .schedule-chart .hour-label[data-hour="23"] {
   transform: rotate(345deg);
+}
+
+svg .chart-slice {
+  fill: #fd9785 !important;
+  stroke: #d7f17b !important;
+  opacity: 0.8 !important;
+}
+
+svg .chart-border {
+  stroke: #8b4513 !important;
+  stroke-width: 4 !important;
+  fill: #cce5ff !important;
+}
+
+svg .chart-divider {
+  stroke: #ffdab9 !important; // 肌色
+  stroke-width: 2 !important;
+  fill: #cce5ff !important;
 }
