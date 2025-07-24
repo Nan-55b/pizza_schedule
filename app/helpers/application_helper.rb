@@ -3,10 +3,11 @@ module ApplicationHelper
     !!session[:user_id]
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def render_schedule_chart(tasks)
     content_tag :svg, width: "300", height: "300", viewBox: "0 0 300 300", xmlns: "http://www.w3.org/2000/svg", style: "background: none;" do
       # 円の背景を描画
-      concat content_tag(:circle, "", cx: "150", cy: "150", r: "100", class: "chart-border", stroke: "#8b4513", "stroke-width": 4, fill: "#ffd1b3")
+      concat content_tag(:circle, "", cx: "150", cy: "150", r: "100", class: "chart-border", stroke: "#8b4513", 'stroke-width': 4, fill: "#ffd1b3")
 
       # タスクごとのパスを描画
       tasks.each do |task|
@@ -70,3 +71,4 @@ module ApplicationHelper
     { start: start_angle, end: end_angle }
   end
 end
+# rubocop:enable Metrics/AbcSize, Metrics/MethodLength

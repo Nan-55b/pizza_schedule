@@ -16,15 +16,14 @@ class SessionsController < ApplicationController
 
   def guest_login
     guest_user = User.find_by(email: 'guest@example.com')
-    @user = login(guest_user.email, 'password')  # ←通常ログインと同じ処理
-  
+    @user = login(guest_user.email, 'password') # ←通常ログインと同じ処理
+
     if @user
       redirect_to root_path, success: 'ゲストユーザーとしてログインしました'
     else
       redirect_to login_path, danger: 'ゲストログインに失敗しました'
     end
   end
-  
 
   def destroy
     logout
