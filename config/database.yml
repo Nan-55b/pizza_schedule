@@ -15,7 +15,7 @@ test:
   database: pizza_schedule_test
   username: postgres
   password: password
-  host: localhost
+  host: db # 修正前 host: localhost
 production:
   adapter: postgresql
   url: <%= ENV['DATABASE_URL'] %>
